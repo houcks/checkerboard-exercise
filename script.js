@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.children[i].style.backgroundColor = `${newColor}`;
     }
   }
+  var audio = new Audio('sandstorm.mp3')
+  document.body.addEventListener('click', audio.play())
 
 setInterval(changeColor, 2000)
 })
