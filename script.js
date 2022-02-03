@@ -1,17 +1,25 @@
 document.addEventListener('DOMContentLoaded', function () {
+  //converts the decimal value of the highest RGB to hex and returns it in color format
+  function colorGenerator(){
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+  }
 
-//let body = document.getElementsByTagName('body')[0]
-//body.style.background = 'background:linear-gradient(#820391, #E43FF7)';
+//prints colors to the screen
   for(var i = 0; i < 63; i++){
-    let colorDiv = document.createElement('div');
-    let offset = 2 * i;
-    if(i % 2 === 1){
-      colorDiv.style.cssText = `width:11.1%;float:left;padding-bottom:11.1%;background-color: rgb(${offset},255,${offset});`;
-    }
-    else{
-      colorDiv.style.cssText = `width:11.1%;float:left;padding-bottom:11.1%;background-color: rgb(255,${offset},${offset});`;
-    }
-    
+    var colorDiv = document.createElement('div');
+    randomColor = colorGenerator()
+    colorDiv.style.cssText = `width:11.1%;float:left;padding-bottom:11.1%;background-color:${randomColor}`;
     document.body.appendChild(colorDiv);
   }
+  
+  //changes color by looping through all child elements and assigning random colors
+  function changeColor(){
+    for(var i = 0; i < document.body.children.length; i++){
+      let newColor = colorGenerator();
+      document.body.children[i].style.backgroundColor = `${newColor}`;
+    }
+  }
+
+setInterval(changeColor, 2000)
 })
+
